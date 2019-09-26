@@ -15,7 +15,6 @@ import pyglet
 from os.path import expanduser
 from geoplotlib import utils
 from geoplotlib.utils import BoundingBox, parse_raw_str
-import geoplotlib.ui
 background = pyglet.graphics.OrderedGroup(0)
 foreground = pyglet.graphics.OrderedGroup(1)
 
@@ -368,8 +367,6 @@ class GeoplotlibApp(pyglet.window.Window):
                           force_zoom=self.geoplotlib_config.requested_zoom)
         for l in self.geoplotlib_config.layers:
             l.invalidate(self.proj)
-        self.gui = glooey.Gui(self, group=foreground)
-        geoplotlib.ui.setup(self.gui, foreground)
         pyglet.app.run()
 
 
