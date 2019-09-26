@@ -18,8 +18,6 @@ from geoplotlib.utils import BoundingBox, parse_raw_str
 background = pyglet.graphics.OrderedGroup(0)
 foreground = pyglet.graphics.OrderedGroup(1)
 
-import glooey
-
 VERT_PER_POINT = 2
 FPS = 30
 TILE_SIZE = 256
