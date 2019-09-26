@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 import colorsys
 import os
+import json
 import matplotlib.pyplot as plt
 from matplotlib import cm
 from mpl_toolkits.mplot3d import Axes3D
@@ -85,10 +86,26 @@ if __name__ == "__main__":
 	threedee.set_xlabel('user_ratings_total')
 	threedee.set_ylabel('rating')
 	threedee.set_zlabel('occupancy_index')
+	
+	# Set fullscreen
+	mng = plt.get_current_fig_manager()
+	
+	if plt.get_backend() == 'TkAgg':
+		mng.window.state('zoomed')
+		
+	if plt.get_backend() == 'wxAgg':
+		mng.frame.Maximize(True)
+	
+	if plt.get_backend() == 'Qt4Agg':
+		figManager.window.showMaximized()
+	
 	plt.show()
 	
 	cheaters = np.where(data['color'] == 'red')
 	cheaters = data.iloc[cheaters]
+	
+	cheaters.to_json('cheaters.json')
+	#json.dump(cheaters.tolist(), codecs.open('cheaters.json', 'w', encoding='utf-8'), separators=(',', ':'), sort_keys=True, indent=4)
 
 	geoplotlib.add_layer(CustomLayer(geoplotlib.utils.DataAccessObject(data), color=[0, 255, 0, 60], point_size=4))
 	geoplotlib.add_layer(CustomLayer(geoplotlib.utils.DataAccessObject(cheaters), color=[255, 0, 0], point_size=4, f_tooltip=lambda r: r['name']))

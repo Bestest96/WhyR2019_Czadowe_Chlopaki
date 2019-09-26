@@ -161,8 +161,7 @@ class UiManager:
 class GeoplotlibApp(pyglet.window.Window):
 
     def __init__(self, geoplotlib_config):
-        super(GeoplotlibApp, self).__init__(geoplotlib_config.screen_w, geoplotlib_config.screen_h,
-                                            fullscreen=False, caption='geoplotlib')
+        super(GeoplotlibApp, self).__init__(geoplotlib_config.screen_w, geoplotlib_config.screen_h, fullscreen=True, caption='geoplotlib')
         global SCREEN_W, SCREEN_H
         SCREEN_W = geoplotlib_config.screen_w
         SCREEN_H = geoplotlib_config.screen_h
