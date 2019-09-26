@@ -104,8 +104,7 @@ if __name__ == "__main__":
 	cheaters = np.where(data['color'] == 'red')
 	cheaters = data.iloc[cheaters]
 	
-	cheaters.to_json('cheaters.json')
-	#json.dump(cheaters.tolist(), codecs.open('cheaters.json', 'w', encoding='utf-8'), separators=(',', ':'), sort_keys=True, indent=4)
+	cheaters.to_json('results/cheaters.json')
 
 	geoplotlib.add_layer(CustomLayer(geoplotlib.utils.DataAccessObject(data), color=[0, 255, 0, 60], point_size=4))
 	geoplotlib.add_layer(CustomLayer(geoplotlib.utils.DataAccessObject(cheaters), color=[255, 0, 0], point_size=4, f_tooltip=lambda r: r['name']))
